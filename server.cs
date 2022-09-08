@@ -311,7 +311,7 @@ namespace server
             {
                 for (int j = 0; j < _clientSockets.Count; j++)
                 {
-                    byte[] data34 = Encoding.ASCII.GetBytes("3121" + ":" + _nicknames[i]); // giving feedback to client
+                    byte[] data34 = Encoding.ASCII.GetBytes("2" + ":" + _nicknames[i]); // giving feedback to client
 
                     try
                     {
