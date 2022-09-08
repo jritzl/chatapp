@@ -119,13 +119,13 @@ namespace WpfApp1
                     Array.Copy(buffer, data, received);
                     string text = Encoding.ASCII.GetString(data);
                     string aaa132 = text.Split(':')[0];
-                    if (text.ToLower() != "sent\n" && text.Split(':')[0] != "3121" && text.ToLower() != " not valid1\n")
+                    if (text.ToLower() != "sent\n" && text.Split(':')[0] != "2" && text.ToLower() != " not valid1\n")
                     {
                         WriteLine(text);
                     }
-                    else if (text.Split(':')[0] == "3121")
+                    else if (text.Split(':')[0] == "2")
                     {
-                        string[] one = text.Split("3121:");
+                        string[] one = text.Split("2:");
                         string nickname = one[1];
                         for (int i = 1; i < one.Length; i++)
                         {
