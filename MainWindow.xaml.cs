@@ -52,22 +52,14 @@ namespace WpfApp1
 
             SendString(msg1);
             connected1.Visibility = Visibility.Visible;
+            refreshing();
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
 
-            request = textbox_msg.Text.ToString();
-            TestsBox.AppendText(request + Environment.NewLine);
-            for (int i = 0; i < targets.Count; i++)
-            {
-                string msg = "1:" + targets[i] + ":" + request; // when server see 1, it will understand it is a text msg
-                Thread.Sleep(10);
-                SendString(msg);
-            }
-
-
-            textbox_msg.Clear();
+            sending();
+            refreshing();
 
         }
 
@@ -210,28 +202,7 @@ namespace WpfApp1
         {
 
 
-            store.Remove(First);
-            store.Remove(Second);
-            store.Remove(Third);
-            store.Remove(Fourth);
-            store.Remove(Fifth);
-            store.Remove(Sixth);
-            store.Remove(Seventh);
-            store.Remove(Eighth);
-            store.Add(First);
-            store.Add(Second);
-            store.Add(Third);
-            store.Add(Fourth);
-            store.Add(Fifth);
-            store.Add(Sixth);
-            store.Add(Seventh);
-            store.Add(Eighth);
-            for (int i = 0; i < nicks.Count; i++)
-            {
-
-                store[i].Visibility = Visibility.Visible;
-                store[i].Content = nicks[i].ToString();
-            }
+            refreshing();
         }
 
 
@@ -324,17 +295,48 @@ namespace WpfApp1
         {
             if (e.Key == Key.Return)
             {
-                request = textbox_msg.Text.ToString();
-                TestsBox.AppendText(request + Environment.NewLine);
-                for (int i = 0; i < targets.Count; i++)
-                {
-                    string msg = "1:" + targets[i] + ":" + request; // when server see 1, it will understand it is a text msg
-                    SendString(msg);
-                    Thread.Sleep(10);
-                }
+                sending();
+            }
+        }
+        private void sending()
+        {
+
+            request = textbox_msg.Text.ToString();
+            TestsBox.AppendText(request + Environment.NewLine);
+            for (int i = 0; i < targets.Count; i++)
+            {
+                string msg = "1:" + targets[i] + ":" + request; // when server see 1, it will understand it is a text msg
+                SendString(msg);
+                Thread.Sleep(10);
+            }
 
 
-                textbox_msg.Clear();
+            textbox_msg.Clear();
+
+        }
+        private void refreshing()
+        {
+            store.Remove(First);
+            store.Remove(Second);
+            store.Remove(Third);
+            store.Remove(Fourth);
+            store.Remove(Fifth);
+            store.Remove(Sixth);
+            store.Remove(Seventh);
+            store.Remove(Eighth);
+            store.Add(First);
+            store.Add(Second);
+            store.Add(Third);
+            store.Add(Fourth);
+            store.Add(Fifth);
+            store.Add(Sixth);
+            store.Add(Seventh);
+            store.Add(Eighth);
+            for (int i = 0; i < nicks.Count; i++)
+            {
+
+                store[i].Visibility = Visibility.Visible;
+                store[i].Content = nicks[i].ToString();
             }
         }
     }
