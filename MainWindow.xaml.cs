@@ -246,11 +246,7 @@ namespace WpfApp1
         {
             targets.Add((string)Eighth.Content);
         }
-        private void sent(string xd)
-        {
-            SendString("1:" + targets[0] + ":" + xd);
-        }
-
+        
         private void First_Unchecked(object sender, RoutedEventArgs e)
         {
             targets.Remove((string)First.Content);
